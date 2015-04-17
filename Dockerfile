@@ -1,4 +1,4 @@
-FROM otechlabs/busybox-java:jdk8
+FROM oberthur/docker-busybox-java:latest
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
