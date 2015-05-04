@@ -1,4 +1,4 @@
-FROM oberthur/docker-busybox-java:jdk8_8.40.26
+FROM oberthur/docker-busybox-java:jdk8_8.45.14
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
@@ -9,5 +9,6 @@ RUN opkg-install bash
 
 # Add user app
 RUN echo "app:x:999:999::/opt/app:/bin/false" >> /etc/passwd; \
+    echo "app:x:998:" >> /etc/group; \
     echo "app:x:999:" >> /etc/group; \
     mkdir -p /opt/app; chown app:app /opt/app
