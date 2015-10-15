@@ -3,7 +3,7 @@ FROM oberthur/docker-alpine-java:jdk8_8.60.27
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
 ENV HOME=/opt/app \
-    _JAVA_OPTIONS=-Duser.home=/opt/jenkins-slave
+    _JAVA_OPTIONS=-Duser.home=/opt/app
 
 WORKDIR /opt/app
 
