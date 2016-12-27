@@ -5,14 +5,12 @@
 : ${LOGBACK_PATH=${HOME}/logback/logback.xml}
 : ${JAVA_CLASSPATH=-cp ${HOME}/${APP_NAME}-${APP_VERSION}.jar:${HOME}/lib/*}
 : ${Xms=128m}
-: ${Xms=512m}
+: ${Xmx=512m}
 : ${MetaspaceSize=128M}
 : ${MaxMetaspaceSize=128M}
 : ${CUSTOM_JAVA_OPTS=}
 
 JAR=$(ls ${HOME}/${APP_NAME}*.jar | head -n1)
-
-shift
 
 export JAVA_OPTS="${JAVA_OPTS} -verbose:gc -XX:+PrintGCDetails -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000"
 export JAVA_OPTS="${JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=${LOG_DIR} -Xms${Xms} -Xmx${Xmx} -XX:MetaspaceSize=${MetaspaceSize} -XX:MaxMetaspaceSize=${MaxMetaspaceSize}"
