@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ulimit -c unlimited
-
 JAR=$(ls ${HOME}/*.jar | head -n1)
 APP_NAME_FROM_JAR=$(echo $(basename $JAR) | sed 's/-[[:digit:]].*//g')
 
