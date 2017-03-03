@@ -27,7 +27,7 @@ LOG_DIR // default -> ${HOME}/logs (HOME=/opt/app as set in Dockerfile)
 
 LOGBACK_PATH // default -> ${HOME}/logback/logback.xml 
 
-JAVA_CLASSPATH // default -> -cp ${JAR}:${HOME}/lib/*  // $JAR is the jar filename
+JAVA_CLASSPATH // default -> -cp ${JAR}:${HOME}/lib/*  // $JAR is the jar path
 
 JVM_XMS // default -> 512m
 
