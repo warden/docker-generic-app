@@ -23,8 +23,6 @@ export JAVA_OPTS="${JAVA_OPTS} -XX:MaxMetaspaceSize=${JVM_MAX_METASPACE_SIZE}"
 export JAVA_OPTS="${JAVA_OPTS} -verbose:gc"
 export JAVA_OPTS="${JAVA_OPTS} -Dsun.rmi.dgc.client.gcInterval=3600000"
 export JAVA_OPTS="${JAVA_OPTS} -Dsun.rmi.dgc.server.gcInterval=3600000"
-export JAVA_OPTS="${JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError"
-export JAVA_OPTS="${JAVA_OPTS} -XX:HeapDumpPath=${LOG_DIR}"
 export JAVA_OPTS="${JAVA_OPTS} -XX:+UseCompressedOops"
 export JAVA_OPTS="${JAVA_OPTS} -Djava.awt.headless=true"
 export JAVA_OPTS="${JAVA_OPTS} -Dnet.sf.ehcache.skipUpdateCheck=true"
@@ -38,10 +36,15 @@ export JAVA_OPTS="${JAVA_OPTS} -XX:+PrintGCDateStamps"
 export JAVA_OPTS="${JAVA_OPTS} -Dapp=${APP_NAME}"
 export JAVA_OPTS="${JAVA_OPTS} ${JAVA_CLASSPATH}"
 export JAVA_OPTS="${JAVA_OPTS} ${JAVA_SECURITY_EGD}"
-export JAVA_OPTS="${JAVA_OPTS} ${CUSTOM_JAVA_OPTS}"	 
+export JAVA_OPTS="${JAVA_OPTS} ${CUSTOM_JAVA_OPTS}"
 
-if [[ ! -z ${DEBUG_PORT} ]]; then
-   export JAVA_OPTS="${JAVA_OPTS} -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=${DEBUG_PORT}" 
+if [[ ! -z "${DEBUG_PORT}" ]]; then
+    export JAVA_OPTS="${JAVA_OPTS} -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=${DEBUG_PORT}"
+fi
+
+if [[ ! -z "${HEAP_DUMP_DIR}" ]]; then
+    export JAVA_OPTS="${JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError"
+    export JAVA_OPTS="${JAVA_OPTS} -XX:HeapDumpPath=${HEAP_DUMP_DIR}"
 fi
 
 trap 'kill -TERM ${JVM_PID}' TERM INT
