@@ -12,6 +12,7 @@ APP_NAME_FROM_JAR=$(echo $(basename $JAR) | sed 's/-[[:digit:]].*//g')
 : ${JVM_METASPACE_SIZE=128M}
 : ${JVM_MAX_METASPACE_SIZE=128M}
 : ${JAVA_SECURITY_EGD=-Djava.security.egd=file:/dev/./urandom}
+: ${POM_JAVA_OPTS=}
 : ${CUSTOM_JAVA_OPTS=}
 : ${APP_OPTS=-d}
 
@@ -38,7 +39,8 @@ export JAVA_OPTS="${JAVA_OPTS} -XX:+PrintGCDateStamps"
 export JAVA_OPTS="${JAVA_OPTS} -Dapp=${APP_NAME}"
 export JAVA_OPTS="${JAVA_OPTS} ${JAVA_CLASSPATH}"
 export JAVA_OPTS="${JAVA_OPTS} ${JAVA_SECURITY_EGD}"
-export JAVA_OPTS="${JAVA_OPTS} ${CUSTOM_JAVA_OPTS}"	 
+export JAVA_OPTS="${JAVA_OPTS} ${POM_JAVA_OPTS}"
+export JAVA_OPTS="${JAVA_OPTS} ${CUSTOM_JAVA_OPTS}"
 
 if [[ ! -z ${DEBUG_PORT} ]]; then
    export JAVA_OPTS="${JAVA_OPTS} -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=${DEBUG_PORT}" 
