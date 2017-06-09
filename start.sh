@@ -40,13 +40,15 @@ export JAVA_OPTS="${JAVA_OPTS} ${JAVA_SECURITY_EGD}"
 export JAVA_OPTS="${JAVA_OPTS} ${POM_JAVA_OPTS}"
 export JAVA_OPTS="${JAVA_OPTS} ${CUSTOM_JAVA_OPTS}"
 
-if [[ ! -z "${DEBUG_PORT}" ]]; then
+if [[ -n "${DEBUG_PORT}" ]]; then
     export JAVA_OPTS="${JAVA_OPTS} -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=${DEBUG_PORT}"
 fi
 
-if [[ ! -z "${HEAP_DUMP_DIR}" ]]; then
+if [[ -n "${HEAP_DUMP_DIR}" ]]; then
     export JAVA_OPTS="${JAVA_OPTS} -XX:+HeapDumpOnOutOfMemoryError"
     export JAVA_OPTS="${JAVA_OPTS} -XX:HeapDumpPath=${HEAP_DUMP_DIR}"
+else
+    export JAVA_OPTS="${JAVA_OPTS} -XX:HeapDumpPath=/dev/null"
 fi
 
 trap 'kill -TERM ${JVM_PID}' TERM INT
