@@ -49,6 +49,12 @@ APP_OPTS // default -> -d
 
 DEBUG_PORT // default -> empty (setting this variable will start application in debug mode listening on specified port number)
 
+HEAP_DUMP_DIR // default -> empty (setting this variable will enable heap dumps to specified in-container directory)
+
+GC_LOG_ENABLED // default -> empty (setting to true will enable GC logging for application)
+
+GC_LOG_FILENAME // default -> empty (only applicable if GC_LOG_ENABLED is set to true, redirects GC log to /opt/app/logs/${GC_LOG_FILENAME} )
+
 
 
 Script mandatory to be set in docker maven plugin pom.xml:
