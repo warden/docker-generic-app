@@ -15,6 +15,8 @@ JVM_METASPACE_SIZE // default -> 128M
 
 JVM_MAX_METASPACE_SIZE // default -> 128M
 
+POM_JAVA_OPTS // default -> empty
+
 CUSTOM_JAVA_OPTS // default -> (empty)
 
 ------------------------------------------------------------
@@ -38,6 +40,8 @@ JVM_METASPACE_SIZE // default -> 128M
 JVM_MAX_METASPACE_SIZE // default -> 128M
 
 JAVA_SECURITY_EGD // default -> -Djava.security.egd=file:/dev/./urandom
+
+POM_JAVA_OPTS // default -> empty
 
 CUSTOM_JAVA_OPTS // default -> empty
 
