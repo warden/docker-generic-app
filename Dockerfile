@@ -1,10 +1,9 @@
-FROM oberthur/docker-ubuntu-java:jdk8_full_8.131.11
+FROM oberthur/docker-ubuntu-java:openjdk-8u131b11_V2
 
 MAINTAINER Dawid Malinowski <d.malinowski@oberthur.com>
 
-ENV HOME=/opt/app 
+ENV HOME=/opt/app
 
 COPY start.sh simple-start.sh /opt/app/
 
 WORKDIR /opt/app
-
